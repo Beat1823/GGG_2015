@@ -1,0 +1,5 @@
+QUIZ:quiz_1
+name:General Knowledge
+wrong_limit:2
+questions:3
+categories:history,geography,math

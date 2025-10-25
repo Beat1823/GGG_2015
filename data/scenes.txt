@@ -1,0 +1,21 @@
+SCENE:intro
+type:normal
+text:Welcome to the adventure!|Press START to continue
+next:scene_1
+bg:0
+music:0
+
+SCENE:scene_1
+type:quiz_trigger
+text:You encounter a wise old man.|He asks you a question...
+next:scene_2
+trigger_quiz:quiz_1
+bg:1
+music:1
+
+SCENE:scene_2
+type:good_ending
+text:You have completed the challenge!|Congratulations!
+next:
+bg:2
+music:2

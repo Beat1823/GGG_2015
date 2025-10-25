@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "genesis.h": "c",
+        "data_load.h": "c",
+        "string.h": "c",
+        "types.h": "c",
+        "scene_manager.h": "c",
+        "quiz_manager.h": "c"
+    }
+}
