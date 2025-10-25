@@ -1,4 +1,5 @@
 #include <genesis.h>
+#include "resources.h"
 #include "data_load.h"
 #include "scene_manager.h"
 #include "quiz_manager.h"
@@ -29,12 +30,13 @@ int main() {
     // Initialize hardware
     JOY_init();
     VDP_setBackgroundColor(1);
-    PAL_setColor(0, RGB24_TO_VDPCOLOR(0x000020));
-    PAL_setColor(1, RGB24_TO_VDPCOLOR(0xFFFFFF));
+    PAL_setColor(0, RGB24_TO_VDPCOLOR(0xFF8000));
+    PAL_setColor(1, RGB24_TO_VDPCOLOR(0x000000));
     PAL_setColor(15, RGB24_TO_VDPCOLOR(0xFF0000));
     VDP_clearPlane(BG_A, TRUE);
     VDP_clearPlane(BG_B, TRUE);
-    
+
+    XGM_setLoopNumber(-1);
     // Initialize game systems
     sceneManagerInit();
     quizManagerInit();
@@ -46,6 +48,7 @@ int main() {
     while(1) {
         switch(g_currentState) {
             case STATE_TITLE:
+                XGM_startPlay(&bgMusic_01);
                 handleTitleState();
                 break;
                 
@@ -54,6 +57,7 @@ int main() {
                 break;
                 
             case STATE_CATEGORY_SELECT:
+                XGM_stopPlay();
                 handleCategorySelectState();
                 break;
                 
@@ -62,7 +66,9 @@ int main() {
                 break;
                 
             case STATE_BAD_ENDING:
+                XGM_stopPlay();
             case STATE_GOOD_ENDING:
+                XGM_stopPlay();
                 handleEndingState();
                 break;
         }
@@ -125,6 +131,7 @@ static void handleCategorySelectState() {
     if(quizManagerUpdateCategorySelect(&g_lastJoy)) {
         g_currentState = STATE_QUIZ;
         VDP_clearPlane(BG_A, TRUE);
+        XGM_startPlay(&quizMusic_01);
         quizManagerDraw();
     }
 }

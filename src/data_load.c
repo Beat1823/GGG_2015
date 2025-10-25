@@ -6,19 +6,18 @@
 const char * const CATEGORY_NAMES[] = {
   "geography",
   "history",
-  "math",
   "music",
   "science",
   "sports",
   "videogames",
 };
-const u16 CATEGORY_COUNT = 7;
+const u16 CATEGORY_COUNT = 6;
 
 // ---- Questions ----
 static const Question QUESTIONS_DATA[] = {
   {
     .id = 0,
-    .category_id = 5,
+    .category_id = 4,
     .question = "Which country won the 2018 FIFA World Cup?",
     .answerA = "Germany",
     .answerB = "France",
@@ -27,7 +26,7 @@ static const Question QUESTIONS_DATA[] = {
   },
   {
     .id = 1,
-    .category_id = 5,
+    .category_id = 4,
     .question = "In basketball how many points is a free throw worth?",
     .answerA = "1",
     .answerB = "2",
@@ -36,7 +35,7 @@ static const Question QUESTIONS_DATA[] = {
   },
   {
     .id = 2,
-    .category_id = 5,
+    .category_id = 4,
     .question = "Who has won the most Olympic gold medals?",
     .answerA = "Usain Bolt",
     .answerB = "Michael Phelps",
@@ -45,7 +44,7 @@ static const Question QUESTIONS_DATA[] = {
   },
   {
     .id = 3,
-    .category_id = 5,
+    .category_id = 4,
     .question = "Which sport uses the term 'love' for zero?",
     .answerA = "Badminton",
     .answerB = "Tennis",
@@ -54,7 +53,7 @@ static const Question QUESTIONS_DATA[] = {
   },
   {
     .id = 4,
-    .category_id = 5,
+    .category_id = 4,
     .question = "Where were the 2016 Summer Olympics held?",
     .answerA = "Tokyo",
     .answerB = "Rio de Janeiro",
@@ -63,7 +62,7 @@ static const Question QUESTIONS_DATA[] = {
   },
   {
     .id = 5,
-    .category_id = 5,
+    .category_id = 4,
     .question = "Which country hosts the Tour de France?",
     .answerA = "Spain",
     .answerB = "France",
@@ -72,7 +71,7 @@ static const Question QUESTIONS_DATA[] = {
   },
   {
     .id = 6,
-    .category_id = 5,
+    .category_id = 4,
     .question = "How long is a marathon?",
     .answerA = "26.2 miles",
     .answerB = "24.5 miles",
@@ -81,7 +80,7 @@ static const Question QUESTIONS_DATA[] = {
   },
   {
     .id = 7,
-    .category_id = 5,
+    .category_id = 4,
     .question = "Which NFL team has won the most Super Bowls?",
     .answerA = "Dallas Cowboys",
     .answerB = "New England Patriots",
@@ -90,7 +89,7 @@ static const Question QUESTIONS_DATA[] = {
   },
   {
     .id = 8,
-    .category_id = 5,
+    .category_id = 4,
     .question = "Who is known as \"The King\" in football (soccer)?",
     .answerA = "Maradona",
     .answerB = "Pelé",
@@ -99,7 +98,7 @@ static const Question QUESTIONS_DATA[] = {
   },
   {
     .id = 9,
-    .category_id = 5,
+    .category_id = 4,
     .question = "What is the term for one stroke under par in golf?",
     .answerA = "Eagle",
     .answerB = "Birdie",
@@ -108,7 +107,7 @@ static const Question QUESTIONS_DATA[] = {
   },
   {
     .id = 10,
-    .category_id = 3,
+    .category_id = 2,
     .question = "Who is known as the \"King of Pop\"?",
     .answerA = "Elvis Presley",
     .answerB = "Michael Jackson",
@@ -117,7 +116,7 @@ static const Question QUESTIONS_DATA[] = {
   },
   {
     .id = 11,
-    .category_id = 3,
+    .category_id = 2,
     .question = "Which band released the album \"Abbey Road\"?",
     .answerA = "The Rolling Stones",
     .answerB = "The Beatles",
@@ -126,7 +125,7 @@ static const Question QUESTIONS_DATA[] = {
   },
   {
     .id = 12,
-    .category_id = 3,
+    .category_id = 2,
     .question = "What instrument does a pianist play?",
     .answerA = "Guitar",
     .answerB = "Piano",
@@ -135,7 +134,7 @@ static const Question QUESTIONS_DATA[] = {
   },
   {
     .id = 13,
-    .category_id = 3,
+    .category_id = 2,
     .question = "Who sang \"Someone Like You\"?",
     .answerA = "Adele",
     .answerB = "Taylor Swift",
@@ -144,7 +143,7 @@ static const Question QUESTIONS_DATA[] = {
   },
   {
     .id = 14,
-    .category_id = 3,
+    .category_id = 2,
     .question = "Which music genre is associated with Bob Marley?",
     .answerA = "Reggae",
     .answerB = "Rock",
@@ -153,7 +152,7 @@ static const Question QUESTIONS_DATA[] = {
   },
   {
     .id = 15,
-    .category_id = 3,
+    .category_id = 2,
     .question = "What is the highest male singing voice?",
     .answerA = "Baritone",
     .answerB = "Tenor",
@@ -162,7 +161,7 @@ static const Question QUESTIONS_DATA[] = {
   },
   {
     .id = 16,
-    .category_id = 3,
+    .category_id = 2,
     .question = "Who was the lead singer of Queen?",
     .answerA = "Freddie Mercury",
     .answerB = "David Bowie",
@@ -171,7 +170,7 @@ static const Question QUESTIONS_DATA[] = {
   },
   {
     .id = 17,
-    .category_id = 3,
+    .category_id = 2,
     .question = "Which country did K-pop originate from?",
     .answerA = "Japan",
     .answerB = "China",
@@ -180,7 +179,7 @@ static const Question QUESTIONS_DATA[] = {
   },
   {
     .id = 18,
-    .category_id = 3,
+    .category_id = 2,
     .question = "Which classical composer became deaf?",
     .answerA = "Beethoven",
     .answerB = "Mozart",
@@ -189,7 +188,7 @@ static const Question QUESTIONS_DATA[] = {
   },
   {
     .id = 19,
-    .category_id = 3,
+    .category_id = 2,
     .question = "Who sang the hit song \"Blinding Lights\"?",
     .answerA = "The Weeknd",
     .answerB = "Drake",
@@ -378,7 +377,7 @@ static const Question QUESTIONS_DATA[] = {
   },
   {
     .id = 40,
-    .category_id = 4,
+    .category_id = 3,
     .question = "What planet is known as the Red Planet?",
     .answerA = "Venus",
     .answerB = "Mars",
@@ -387,7 +386,7 @@ static const Question QUESTIONS_DATA[] = {
   },
   {
     .id = 41,
-    .category_id = 4,
+    .category_id = 3,
     .question = "What is the chemical symbol for water?",
     .answerA = "H2O",
     .answerB = "O2",
@@ -396,7 +395,7 @@ static const Question QUESTIONS_DATA[] = {
   },
   {
     .id = 42,
-    .category_id = 4,
+    .category_id = 3,
     .question = "How many bones are in the adult human body?",
     .answerA = "206",
     .answerB = "210",
@@ -405,7 +404,7 @@ static const Question QUESTIONS_DATA[] = {
   },
   {
     .id = 43,
-    .category_id = 4,
+    .category_id = 3,
     .question = "What gas do plants absorb during photosynthesis?",
     .answerA = "Oxygen",
     .answerB = "Carbon Dioxide",
@@ -414,7 +413,7 @@ static const Question QUESTIONS_DATA[] = {
   },
   {
     .id = 44,
-    .category_id = 4,
+    .category_id = 3,
     .question = "What is the speed of light?",
     .answerA = "300",
     .answerB = "000 km/s",
@@ -423,7 +422,7 @@ static const Question QUESTIONS_DATA[] = {
   },
   {
     .id = 45,
-    .category_id = 4,
+    .category_id = 3,
     .question = "Who developed the theory of relativity?",
     .answerA = "Isaac Newton",
     .answerB = "Albert Einstein",
@@ -432,7 +431,7 @@ static const Question QUESTIONS_DATA[] = {
   },
   {
     .id = 46,
-    .category_id = 4,
+    .category_id = 3,
     .question = "What part of the atom has a positive charge?",
     .answerA = "Electron",
     .answerB = "Proton",
@@ -441,7 +440,7 @@ static const Question QUESTIONS_DATA[] = {
   },
   {
     .id = 47,
-    .category_id = 4,
+    .category_id = 3,
     .question = "Which planet is closest to the Sun?",
     .answerA = "Venus",
     .answerB = "Mercury",
@@ -450,7 +449,7 @@ static const Question QUESTIONS_DATA[] = {
   },
   {
     .id = 48,
-    .category_id = 4,
+    .category_id = 3,
     .question = "What is the process of water turning into vapor called?",
     .answerA = "Condensation",
     .answerB = "Evaporation",
@@ -459,7 +458,7 @@ static const Question QUESTIONS_DATA[] = {
   },
   {
     .id = 49,
-    .category_id = 4,
+    .category_id = 3,
     .question = "What is the hardest natural substance on Earth?",
     .answerA = "Gold",
     .answerB = "Iron",
@@ -468,7 +467,7 @@ static const Question QUESTIONS_DATA[] = {
   },
   {
     .id = 50,
-    .category_id = 6,
+    .category_id = 5,
     .question = "What is the best-selling video game of all time?",
     .answerA = "Minecraft",
     .answerB = "Tetris",
@@ -477,7 +476,7 @@ static const Question QUESTIONS_DATA[] = {
   },
   {
     .id = 51,
-    .category_id = 6,
+    .category_id = 5,
     .question = "Which company created the PlayStation console?",
     .answerA = "Sega",
     .answerB = "Nintendo",
@@ -486,7 +485,7 @@ static const Question QUESTIONS_DATA[] = {
   },
   {
     .id = 52,
-    .category_id = 6,
+    .category_id = 5,
     .question = "What is the name of Mario’s brother?",
     .answerA = "Luigi",
     .answerB = "Yoshi",
@@ -495,7 +494,7 @@ static const Question QUESTIONS_DATA[] = {
   },
   {
     .id = 53,
-    .category_id = 6,
+    .category_id = 5,
     .question = "Which game features the character Master Chief?",
     .answerA = "Halo",
     .answerB = "Call of Duty",
@@ -504,7 +503,7 @@ static const Question QUESTIONS_DATA[] = {
   },
   {
     .id = 54,
-    .category_id = 6,
+    .category_id = 5,
     .question = "In which game do players compete in a battle royale on an island?",
     .answerA = "Overwatch",
     .answerB = "Fortnite",
@@ -513,7 +512,7 @@ static const Question QUESTIONS_DATA[] = {
   },
   {
     .id = 55,
-    .category_id = 6,
+    .category_id = 5,
     .question = "What Pokémon is number 25 in the Pokédex?",
     .answerA = "Bulbasaur",
     .answerB = "Pikachu",
@@ -522,7 +521,7 @@ static const Question QUESTIONS_DATA[] = {
   },
   {
     .id = 56,
-    .category_id = 6,
+    .category_id = 5,
     .question = "What is the main currency in The Legend of Zelda?",
     .answerA = "Gold",
     .answerB = "Rupees",
@@ -531,7 +530,7 @@ static const Question QUESTIONS_DATA[] = {
   },
   {
     .id = 57,
-    .category_id = 6,
+    .category_id = 5,
     .question = "Which game series features locations like Vice City and Los Santos?",
     .answerA = "GTA",
     .answerB = "Red Dead Redemption",
@@ -540,7 +539,7 @@ static const Question QUESTIONS_DATA[] = {
   },
   {
     .id = 58,
-    .category_id = 6,
+    .category_id = 5,
     .question = "Who is the creator of the game Minecraft?",
     .answerA = "Gabe Newell",
     .answerB = "Notch",
@@ -549,7 +548,7 @@ static const Question QUESTIONS_DATA[] = {
   },
   {
     .id = 59,
-    .category_id = 6,
+    .category_id = 5,
     .question = "Which company developed the game “Overwatch”?",
     .answerA = "Valve",
     .answerB = "Blizzard",
@@ -565,7 +564,7 @@ static const Scene SCENES_DATA[] = {
   {
     .id = 0,
     .type = SCENE_TYPE_NORMAL,
-    .text = "Welcome to the adventure!\nPress START to continue",
+    .text = "You wake up in a hospital.\n Not remembering anything, you get up from the bed.",
     .nextScene = 1,
     .triggerQuiz = -1,
     .questionId = -1,
@@ -574,16 +573,16 @@ static const Scene SCENES_DATA[] = {
   {
     .id = 1,
     .type = SCENE_TYPE_QUIZ_TRIGGER,
-    .text = "You encounter a wise old man.\nHe asks you a question...",
+    .text = "You put on a near by gown but\nSuddenly your chest hurts...",
     .nextScene = 2,
-    .triggerQuiz = 1,
+    .triggerQuiz = 0,
     .questionId = -1,
     .bg = 1, .music = 1,
   },
   {
     .id = 2,
     .type = SCENE_TYPE_NORMAL,
-    .text = "You have completed the challenge!\n But...",
+    .text = "But it passes. You walk outside.\n You see a stranger and get their attention.",
     .nextScene = 3,
     .triggerQuiz = -1,
     .questionId = -1,
@@ -592,16 +591,16 @@ static const Scene SCENES_DATA[] = {
   {
     .id = 3,
     .type = SCENE_TYPE_QUIZ_TRIGGER,
-    .text = "He comes at you with another one!",
+    .text = "The man turns around.\n He starts walking at you bearing a knife!",
     .nextScene = 4,
-    .triggerQuiz = -1,
+    .triggerQuiz = 1,
     .questionId = -1,
     .bg = 2, .music = 2,
   },
   {
     .id = 4,
     .type = SCENE_TYPE_QUIZ_TRIGGER,
-    .text = "Ok hes good, he leaves.",
+    .text = "Oh, he just wanted to ask if you wanted a knife.\n You got \"the knife\".",
     .nextScene = -1,
     .triggerQuiz = -1,
     .questionId = -1,
@@ -612,8 +611,8 @@ const Scene * const SCENES = SCENES_DATA;
 const u16 SCENES_COUNT = 5;
 
 // ---- Quizzes ----
-static const u16 _QUIZ_CATS_0[] = { 1, 0, 2 };
-static const u16 _QUIZ_CATS_1[] = { 1, 0, 2, 6, 4 };
+static const u16 _QUIZ_CATS_0[] = { 1, 0, 3, 5, 2 };
+static const u16 _QUIZ_CATS_1[] = { 1, 0, 3, 5, 2 };
 static const Quiz QUIZZES_DATA[] = {
   {
     .id = 0,
@@ -638,23 +637,21 @@ const u16 QUIZZES_COUNT = 2;
 // ---- Category Question Indexes ----
 static const u16 _CAT_QIDX_0[] = { 20, 21, 22, 23, 24, 25, 26, 27, 28, 29 };
 static const u16 _CAT_QIDX_1[] = { 30, 31, 32, 33, 34, 35, 36, 37, 38, 39 };
-static const u16 _CAT_QIDX_3[] = { 10, 11, 12, 13, 14, 15, 16, 17, 18, 19 };
-static const u16 _CAT_QIDX_4[] = { 40, 41, 42, 43, 44, 45, 46, 47, 48, 49 };
-static const u16 _CAT_QIDX_5[] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-static const u16 _CAT_QIDX_6[] = { 50, 51, 52, 53, 54, 55, 56, 57, 58, 59 };
+static const u16 _CAT_QIDX_2[] = { 10, 11, 12, 13, 14, 15, 16, 17, 18, 19 };
+static const u16 _CAT_QIDX_3[] = { 40, 41, 42, 43, 44, 45, 46, 47, 48, 49 };
+static const u16 _CAT_QIDX_4[] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+static const u16 _CAT_QIDX_5[] = { 50, 51, 52, 53, 54, 55, 56, 57, 58, 59 };
 const u16 * const CATEGORY_QUESTION_INDEXES[] = {
   _CAT_QIDX_0,
   _CAT_QIDX_1,
-  0,
+  _CAT_QIDX_2,
   _CAT_QIDX_3,
   _CAT_QIDX_4,
   _CAT_QIDX_5,
-  _CAT_QIDX_6,
 };
 const u16 CATEGORY_QUESTION_COUNTS[] = {
   10,
   10,
-  0,
   10,
   10,
   10,
