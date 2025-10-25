@@ -1,23 +1,23 @@
 #include <genesis.h>
 #include "scene_manager.h"
 
-static Scene* currentScene = NULL;
-static bool waitingForInput = FALSE;
-static bool shouldTriggerQuiz = FALSE;
-static bool reachedEnd = FALSE;
+static const Scene* g_currentScene = NULL;
+static bool g_waitingForInput = FALSE;
+static bool g_shouldTriggerQuiz = FALSE;
+static bool g_reachedEnd = FALSE;
 
 void sceneManagerInit() {
-    currentScene = NULL;
-    waitingForInput = FALSE;
-    shouldTriggerQuiz = FALSE;
-    reachedEnd = FALSE;
+    g_currentScene = NULL;
+    g_waitingForInput = FALSE;
+    g_shouldTriggerQuiz = FALSE;
+    g_reachedEnd = FALSE;
 }
 
 void sceneManagerStart() {
-    currentScene = &SCENES[0];
-    waitingForInput = FALSE;
-    shouldTriggerQuiz = FALSE;
-    reachedEnd = FALSE;
+    g_currentScene = &SCENES[0];  // Start at first scene
+    g_waitingForInput = FALSE;
+    g_shouldTriggerQuiz = FALSE;
+    g_reachedEnd = FALSE;
     sceneManagerDraw();
 }
 
@@ -26,15 +26,16 @@ void sceneManagerReset() {
 }
 
 void sceneManagerDraw() {
-    if(!currentScene) return;
+    if(!g_currentScene) return;
     
     VDP_clearPlane(BG_A, TRUE);
     
-    // Draw the scene text
-    const char* text = currentScene->text;
+    // Draw text with word wrapping
+    const char* text = g_currentScene->text;
     u16 y = 22;
     u16 x = 2;
     u16 lineLen = 0;
+    const u16 maxLineLen = 36;
     
     for(u16 i = 0; text[i] != '\0'; i++) {
         if(text[i] == '\n') {
@@ -45,7 +46,8 @@ void sceneManagerDraw() {
             char str[2] = {text[i], '\0'};
             VDP_drawText(str, x++, y);
             lineLen++;
-            if(lineLen >= 36) {
+            
+            if(lineLen >= maxLineLen) {
                 y++;
                 x = 2;
                 lineLen = 0;
@@ -54,91 +56,102 @@ void sceneManagerDraw() {
     }
     
     VDP_drawText("Press A to continue...", 8, 27);
-    waitingForInput = TRUE;
+    g_waitingForInput = TRUE;
 }
 
-void sceneManagerUpdate(u16* g_lastJoy) {
+void sceneManagerUpdate(u16* lastJoy) {
     u16 joy = JOY_readJoypad(JOY_1);
     
-    if(!waitingForInput) {
+    // If not waiting for input, show the scene
+    if(!g_waitingForInput) {
         sceneManagerDraw();
+        *lastJoy = joy;
         return;
     }
     
-    if((joy & BUTTON_A) && !(*g_lastJoy & BUTTON_A)) {
-        // Check scene type
-        switch(currentScene->type) {
+    // Check for A button press (with debounce)
+    if((joy & BUTTON_A) && !(*lastJoy & BUTTON_A)) {
+        switch(g_currentScene->type) {
             case SCENE_TYPE_NORMAL:
                 // Move to next scene
-                currentScene = &SCENES[currentScene->nextScene];
-                if(currentScene) {
-                    waitingForInput = FALSE;
+                if(g_currentScene->nextScene >= 0 && 
+                   g_currentScene->nextScene < SCENES_COUNT) {
+                    g_currentScene = &SCENES[g_currentScene->nextScene];
+                    g_waitingForInput = FALSE;
                 } else {
-                    reachedEnd = TRUE;
+                    g_reachedEnd = TRUE;
                 }
                 break;
                 
             case SCENE_TYPE_QUIZ_TRIGGER:
-                // Trigger quiz
-                shouldTriggerQuiz = TRUE;
-                waitingForInput = FALSE;
+                // Signal that we need to show a quiz
+                g_shouldTriggerQuiz = TRUE;
+                g_waitingForInput = FALSE;
                 break;
                 
             case SCENE_TYPE_GOOD_ENDING:
             case SCENE_TYPE_BAD_ENDING:
-                reachedEnd = TRUE;
+                g_reachedEnd = TRUE;
                 break;
         }
     }
     
-    *g_lastJoy = joy;
+    *lastJoy = joy;
 }
 
 bool sceneManagerShouldTriggerQuiz() {
-    return shouldTriggerQuiz;
+    return g_shouldTriggerQuiz;
 }
 
 bool sceneManagerGetTriggeredQuiz(u16* outQuizId) {
-    if(currentScene && currentScene->type == SCENE_TYPE_QUIZ_TRIGGER) {
-       if (currentScene->triggerQuiz >= 0 && currentScene->triggerQuiz < QUIZZES_COUNT)
-        {
-            *outQuizId = currentScene->triggerQuiz;
-            return true;
-        }
+    if(!g_currentScene || g_currentScene->type != SCENE_TYPE_QUIZ_TRIGGER) {
+        return FALSE;
     }
-    return false;
+    
+    if(g_currentScene->triggerQuiz >= 0 && 
+       g_currentScene->triggerQuiz < QUIZZES_COUNT) {
+        *outQuizId = g_currentScene->triggerQuiz;
+        return TRUE;
+    }
+    
+    return FALSE;
 }
 
-bool sceneManagerGetQuestionId(u16* outQuestionID) {
-    if(currentScene && currentScene->type == SCENE_TYPE_QUIZ_TRIGGER) {
-        if (currentScene->questionId >= 0 && currentScene->questionId < QUESTIONS_COUNT)
-        {
-            *outQuestionID = currentScene->questionId;
-            return true;
-        }
+bool sceneManagerGetQuestionId(u16* outQuestionId) {
+    if(!g_currentScene || g_currentScene->type != SCENE_TYPE_QUIZ_TRIGGER) {
+        return FALSE;
     }
-    return false;
+    
+    if(g_currentScene->questionId >= 0 && 
+       g_currentScene->questionId < QUESTIONS_COUNT) {
+        *outQuestionId = g_currentScene->questionId;
+        return TRUE;
+    }
+    
+    return FALSE;
 }
 
 void sceneManagerContinueAfterQuiz() {
-    shouldTriggerQuiz = FALSE;
-
-    if (currentScene &&
-        currentScene->nextScene >= 0 &&
-        currentScene->nextScene < SCENES_COUNT)
-    {
-        currentScene = &SCENES[currentScene->nextScene];
-        reachedEnd = FALSE;
+    g_shouldTriggerQuiz = FALSE;
+    
+    // Move to next scene after quiz
+    if(g_currentScene && 
+       g_currentScene->nextScene >= 0 && 
+       g_currentScene->nextScene < SCENES_COUNT) {
+        g_currentScene = &SCENES[g_currentScene->nextScene];
+        g_reachedEnd = FALSE;
+    } else {
+        // No next scene, we're at an ending
+        g_reachedEnd = TRUE;
     }
-    else
-    {
-        // No next scene → we’re at an ending
-        reachedEnd = TRUE;
-    }
-
-    waitingForInput = FALSE;
+    
+    g_waitingForInput = FALSE;
 }
 
 bool sceneManagerReachedEnd() {
-    return reachedEnd;
+    return g_reachedEnd;
+}
+
+SceneType sceneManagerGetEndingType() {
+    return g_currentScene ? g_currentScene->type : SCENE_TYPE_GOOD_ENDING;
 }

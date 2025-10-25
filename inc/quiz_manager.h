@@ -2,7 +2,7 @@
 #define QUIZ_MANAGER_H
 
 #include <genesis.h>
-#include "inc/data_load.h"
+#include "data_load.h"
 
 typedef enum {
     QUIZ_IN_PROGRESS,
@@ -14,8 +14,8 @@ void quizManagerInit();
 void quizManagerStartQuiz(u16 quizId);
 void quizManagerStartSingleQuestion(u16 questionId);
 void quizManagerDrawCategorySelect();
-bool quizManagerUpdateCategorySelect(u16* g_lastJoy);
+bool quizManagerUpdateCategorySelect(u16* lastJoy);
 void quizManagerDraw();
-QuizResult quizManagerUpdate(u16* g_lastJoy);
+QuizResult quizManagerUpdate(u16* lastJoy);
 
 #endif

@@ -1,4 +1,61 @@
 id,category,question,answer_a,answer_b,answer_c,correct
+q_sport_1,sports,Which country won the 2018 FIFA World Cup?,Germany,France,Brazil,b
+q_sport_2,sports,In basketball how many points is a free throw worth?,1,2,3,a
+q_sport_3,sports,Who has won the most Olympic gold medals?,Usain Bolt,Michael Phelps,Carl Lewis,b
+q_sport_4,sports,Which sport uses the term 'love' for zero?,Badminton,Tennis,Cricket,b
+q_sport_5,sports,Where were the 2016 Summer Olympics held?,Tokyo,Rio de Janeiro,London,b
+q_sport_6,sports,Which country hosts the Tour de France?,Spain,France,Italy,b
+q_sport_7,sports,How long is a marathon?,26.2 miles,24.5 miles,28 miles,a
+q_sport_8,sports,Which NFL team has won the most Super Bowls?,Dallas Cowboys,New England Patriots,Pittsburgh Steelers,c
+q_sport_9,sports,Who is known as "The King" in football (soccer)?,Maradona,Pelé,Messi,b
+q_sport_10,sports,What is the term for one stroke under par in golf?,Eagle,Birdie,Bogey,b
+q_music_1,music,Who is known as the "King of Pop"?,Elvis Presley,Michael Jackson,Prince,b
+q_music_2,music,Which band released the album "Abbey Road"?,The Rolling Stones,The Beatles,Queen,b
+q_music_3,music,What instrument does a pianist play?,Guitar,Piano,Drums,b
+q_music_4,music,Who sang "Someone Like You"?,Adele,Taylor Swift,Beyoncé,a
+q_music_5,music,Which music genre is associated with Bob Marley?,Reggae,Rock,Jazz,a
+q_music_6,music,What is the highest male singing voice?,Baritone,Tenor,Bass,b
+q_music_7,music,Who was the lead singer of Queen?,Freddie Mercury,David Bowie,Robert Plant,a
+q_music_8,music,Which country did K-pop originate from?,Japan,China,South Korea,c
+q_music_9,music,Which classical composer became deaf?,Beethoven,Mozart,Chopin,a
+q_music_10,music,Who sang the hit song "Blinding Lights"?,The Weeknd,Drake,Post Malone,a
+q_geo_1,geography,What is the capital of France?,Rome,Paris,Berlin,b
+q_geo_2,geography,Which continent is the Sahara Desert located in?,Asia,Australia,Africa,c
+q_geo_3,geography,Mount Everest lies on the border of Nepal and which country?,India,China,Bhutan,b
+q_geo_4,geography,What is the largest ocean on Earth?,Atlantic,Pacific,Indian,b
+q_geo_5,geography,Which country has the most people?,India,USA,China,a
+q_geo_6,geography,What is the longest river in the world?,Amazon,Nile,Mississippi,b
+q_geo_7,geography,Which U.S. state is known as "The Sunshine State"?,California,Florida,Texas,b
+q_geo_8,geography,What is the smallest country in the world?,Monaco,Vatican City,San Marino,b
+q_geo_9,geography,Which desert covers much of northern Africa?,Gobi,Sahara,Kalahari,b
+q_geo_10,geography,Which city is known as the "Big Apple"?,Los Angeles,Chicago,New York City,c
 q_hist_1,history,When did World War II end?,1943,1945,1947,b
-q_geo_1,geography,Which is the largest ocean?,Atlantic,Pacific,Indian,b
-q_math_1,math,What is 5 * 6?,25,30,35,b
+q_hist_2,history,Who was the first President of the United States?,George Washington,Thomas Jefferson,Abraham Lincoln,a
+q_hist_3,history,In which year did the Titanic sink?,1910,1912,1914,b
+q_hist_4,history,Who discovered America in 1492?,Christopher Columbus,Ferdinand Magellan,Marco Polo,a
+q_hist_5,history,What wall fell in 1989 symbolizing the end of the Cold War?,Berlin Wall,Great Wall of China,Hadrian’s Wall,a
+q_hist_6,history,Who was the British Prime Minister during most of World War II?,Winston Churchill,Neville Chamberlain,Margaret Thatcher,a
+q_hist_7,history,Which empire built the Colosseum?,Greek,Roman,Byzantine,b
+q_hist_8,history,What was the name of the ship that brought the Pilgrims to America?,Santa Maria,Mayflower,Endeavour,b
+q_hist_9,history,Who was known as the Maid of Orléans?,Catherine the Great,Joan of Arc,Marie Antoinette,b
+q_hist_10,history,In which year did humans first land on the moon?,1965,1969,1972,b
+q_sci_1,science,What planet is known as the Red Planet?,Venus,Mars,Jupiter,b
+q_sci_2,science,What is the chemical symbol for water?,H2O,O2,CO2,a
+q_sci_3,science,How many bones are in the adult human body?,206,210,215,a
+q_sci_4,science,What gas do plants absorb during photosynthesis?,Oxygen,Carbon Dioxide,Nitrogen,b
+q_sci_5,science,What is the speed of light?,300,000 km/s,150,000 km/s,3,000 km/s,a
+q_sci_6,science,Who developed the theory of relativity?,Isaac Newton,Albert Einstein,Galileo Galilei,b
+q_sci_7,science,What part of the atom has a positive charge?,Electron,Proton,Neutron,b
+q_sci_8,science,Which planet is closest to the Sun?,Venus,Mercury,Earth,b
+q_sci_9,science,What is the process of water turning into vapor called?,Condensation,Evaporation,Precipitation,b
+q_sci_10,science,What is the hardest natural substance on Earth?,Gold,Iron,Diamond,c
+q_game_1,videogames,What is the best-selling video game of all time?,Minecraft,Tetris,GTA V,a
+q_game_2,videogames,Which company created the PlayStation console?,Sega,Nintendo,Sony,c
+q_game_3,videogames,What is the name of Mario’s brother?,Luigi,Yoshi,Wario,a
+q_game_4,videogames,Which game features the character Master Chief?,Halo,Call of Duty,Destiny,a
+q_game_5,videogames,In which game do players compete in a battle royale on an island?,Overwatch,Fortnite,Apex Legends,b
+q_game_6,videogames,What Pokémon is number 25 in the Pokédex?,Bulbasaur,Pikachu,Charmander,b
+q_game_7,videogames,What is the main currency in The Legend of Zelda?,Gold,Rupees,Coins,b
+q_game_8,videogames,Which game series features locations like Vice City and Los Santos?,GTA,Red Dead Redemption,Saints Row,a
+q_game_9,videogames,Who is the creator of the game Minecraft?,Gabe Newell,Notch,Hideo Kojima,b
+q_game_10,videogames,Which company developed the game “Overwatch”?,Valve,Blizzard,Ubisoft,b

@@ -14,8 +14,23 @@ bg:1
 music:1
 
 SCENE:scene_2
-type:good_ending
-text:You have completed the challenge!|Congratulations!
+type:normal
+text:You have completed the challenge!| But...
+next:scene_3
+bg:2
+music:2
+
+SCENE:scene_3
+type:quiz_trigger
+text:He comes at you with another one!
+trigger_quiz:quiz_2
+next:good_ending
+bg:2
+music:2
+
+SCENE:good_ending
+type:quiz_trigger
+text:Ok hes good, he leaves.
 next:
 bg:2
 music:2

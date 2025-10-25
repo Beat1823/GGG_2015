@@ -14,9 +14,9 @@ typedef struct {
   u16 id;                // numeric handle; the generator will index these for you
   u16 category_id;       // mapped from "history", "geography", "math", etc.
   const char *question;  // ROM string
-  char answerA[16];
-  char answerB[16];
-  char answerC[16];// up to 4 choices; unused set to ""
+  char answerA[20];
+  char answerB[20];
+  char answerC[20];// up to 4 choices; unused set to ""
   u8  correct;           // 0..3 (a,b,c,d)
 } Question;
 
