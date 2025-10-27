@@ -564,7 +564,7 @@ static const Scene SCENES_DATA[] = {
   {
     .id = 0,
     .type = SCENE_TYPE_NORMAL,
-    .text = "You wake up in a hospital.\n Not remembering anything, you get up from the bed.",
+    .text = "You wake up in a hospital.\n Not remembering anything,\n you get up from the bed.",
     .nextScene = 1,
     .triggerQuiz = -1,
     .questionId = -1,
@@ -582,7 +582,7 @@ static const Scene SCENES_DATA[] = {
   {
     .id = 2,
     .type = SCENE_TYPE_NORMAL,
-    .text = "But it passes. You walk outside.\n You see a stranger and get their attention.",
+    .text = "But it passes. You walk outside.\n You see a stranger\n and get their attention.",
     .nextScene = 3,
     .triggerQuiz = -1,
     .questionId = -1,
@@ -599,7 +599,7 @@ static const Scene SCENES_DATA[] = {
   },
   {
     .id = 4,
-    .type = SCENE_TYPE_QUIZ_TRIGGER,
+    .type = SCENE_TYPE_GOOD_ENDING,
     .text = "Oh, he just wanted to ask if you wanted a knife.\n You got \"the knife\".",
     .nextScene = -1,
     .triggerQuiz = -1,

@@ -1,6 +1,6 @@
 SCENE:intro
 type:normal
-text: You wake up in a hospital.| Not remembering anything, you get up from the bed.
+text: You wake up in a hospital.| Not remembering anything,| you get up from the bed.
 next:scene_1
 bg:0
 music:0
@@ -15,7 +15,7 @@ music:1
 
 SCENE:scene_2
 type:normal
-text: But it passes. You walk outside.| You see a stranger and get their attention.
+text: But it passes. You walk outside.| You see a stranger| and get their attention.
 next:scene_3
 bg:2
 music:2
@@ -24,12 +24,12 @@ SCENE:scene_3
 type:quiz_trigger
 text:The man turns around.| He starts walking at you bearing a knife!
 trigger_quiz:quiz_2
-next:good_ending
+next:scene_4
 bg:2
 music:2
 
-SCENE:good_ending
-type:quiz_trigger
+SCENE:scene_4
+type:good_ending
 text:Oh, he just wanted to ask if you wanted a knife.| You got "the knife".
 next:
 bg:2
