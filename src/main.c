@@ -9,7 +9,7 @@
 // Game state machine
 typedef enum {
     STATE_TITLE,
-    STATE_SCENE,           // Renamed from VISUAL_NOVEL for clarity
+    STATE_SCENE,
     STATE_CATEGORY_SELECT,
     STATE_QUIZ,
     STATE_BAD_ENDING,
@@ -21,10 +21,9 @@ static u16 g_lastJoy = 0;
 u16 g_baseTile = 0;
 static s16 g_scrollX = 0;
 static s16 g_scrollY = 0;
-static NextScene g_NextScene = SCENE_A;
+static NextScene g_nextScenePath = SCENE_A;  // Track which path to take
 static s16 g_scrollSpeedX = FIX16(2.1);
 static s16 g_scrollSpeedY = FIX16(2.1);
-
 
 // Forward declarations
 static void handleTitleState();
@@ -84,8 +83,9 @@ int main() {
                 
             case STATE_BAD_ENDING:
                 XGM_pausePlay();
-                handleSceneState();
+                handleEndingState();
                 break;
+                
             case STATE_GOOD_ENDING:
                 XGM_pausePlay();
                 handleEndingState();
@@ -103,9 +103,11 @@ static void handleTitleState() {
     
     if((joy & BUTTON_START) && !(g_lastJoy & BUTTON_START)) {
         g_currentState = STATE_SCENE;
+        g_nextScenePath = SCENE_A;  // Start on normal path
         sceneManagerReset();
         sceneManagerStart();
         VDP_clearPlane(BG_A, TRUE);
+        VDP_clearPlane(BG_B, TRUE);
         sceneManagerDraw();
     }
     
@@ -113,7 +115,9 @@ static void handleTitleState() {
 }
 
 static void handleSceneState() {
-    sceneManagerUpdate(&g_lastJoy, g_NextScene);
+    // FIX: Pass the current path to scene manager
+    sceneManagerUpdate(&g_lastJoy, g_nextScenePath);
+    
     // Check if we need to trigger a quiz
     if(sceneManagerShouldTriggerQuiz()) {
         u16 questionId;
@@ -124,6 +128,9 @@ static void handleSceneState() {
             quizManagerStartSingleQuestion(questionId);
             g_currentState = STATE_QUIZ;
             VDP_clearPlane(BG_A, TRUE);
+            VDP_clearPlane(BG_B, TRUE);
+            XGM_startPlay(&quizMusic_01);
+            drawBackground();
             quizManagerDraw();
         }
         // Full quiz mode?
@@ -131,6 +138,7 @@ static void handleSceneState() {
             quizManagerStartQuiz(quizId);
             g_currentState = STATE_CATEGORY_SELECT;
             VDP_clearPlane(BG_A, TRUE);
+            VDP_clearPlane(BG_B, TRUE);
             quizManagerDrawCategorySelect();
         }
     }
@@ -141,6 +149,7 @@ static void handleSceneState() {
         g_currentState = (endType == SCENE_TYPE_GOOD_ENDING) ? 
                          STATE_GOOD_ENDING : STATE_BAD_ENDING;
         VDP_clearPlane(BG_A, TRUE);
+        VDP_clearPlane(BG_B, TRUE);
         drawEnding(endType == SCENE_TYPE_GOOD_ENDING);
     }
 }
@@ -149,6 +158,7 @@ static void handleCategorySelectState() {
     if(quizManagerUpdateCategorySelect(&g_lastJoy)) {
         g_currentState = STATE_QUIZ;
         VDP_clearPlane(BG_A, TRUE);
+        VDP_clearPlane(BG_B, TRUE);
         XGM_startPlay(&quizMusic_01);
         drawBackground();
         quizManagerDraw();
@@ -160,21 +170,26 @@ static void handleQuizState() {
 
     switch(result) {
         case QUIZ_FAILED:
+            // FIX: Set path to SCENE_B (failure path) and continue scene
             XGM_pausePlay();
+            g_nextScenePath = SCENE_B;
+            sceneManagerContinueAfterQuiz(g_nextScenePath);
             g_currentState = STATE_SCENE;
-            g_NextScene = SCENE_B;
             VDP_clearPlane(BG_A, TRUE);
             VDP_clearPlane(BG_B, TRUE);
+            XGM_startPlay(&bgMusic_01);
+            sceneManagerDraw();
             break;
             
         case QUIZ_PASSED:
+            // FIX: Set path to SCENE_A (success path) and continue scene
+            g_nextScenePath = SCENE_A;
+            sceneManagerContinueAfterQuiz(g_nextScenePath);
             g_currentState = STATE_SCENE;
-            g_NextScene = SCENE_A;
-            sceneManagerContinueAfterQuiz(g_NextScene);
             VDP_clearPlane(BG_A, TRUE);
             VDP_clearPlane(BG_B, TRUE);
-            sceneManagerDraw();
             XGM_startPlay(&bgMusic_01);
+            sceneManagerDraw();
             break;
             
         case QUIZ_IN_PROGRESS:
@@ -188,8 +203,10 @@ static void handleEndingState() {
     
     if((joy & BUTTON_START) && !(g_lastJoy & BUTTON_START)) {
         g_currentState = STATE_TITLE;
+        g_nextScenePath = SCENE_A;  // Reset path
         sceneManagerReset();
         VDP_clearPlane(BG_A, TRUE);
+        VDP_clearPlane(BG_B, TRUE);
         drawTitle();
     }
     
@@ -198,26 +215,22 @@ static void handleEndingState() {
 
 static void drawTitle() {
     VDP_clearPlane(BG_A, TRUE);
-    VDP_drawText("HORROR QUIZ", 14, 8);
-    VDP_drawText("A Game of Life and Death", 8, 12);
-    VDP_drawText("Press START", 14, 20);
+    VDP_drawText("Knowing", 14, 8);
+    VDP_drawText("Press Start", 14, 20);
 }
 
 static void drawEnding(bool isGood) {
     if(isGood) {
-        VDP_drawText("YOU SURVIVED!", 13, 12);
-        VDP_drawText("...This time.", 13, 14);
+        VDP_drawText("The End", 13, 12);
     } else {
-        VDP_drawText("YOU FAILED!", 14, 12);
-        VDP_drawText("The darkness claims you...", 7, 14);
+        VDP_drawText("Bad End", 14, 12);
     }
-    VDP_drawText("Press START to retry", 10, 20);
+    VDP_drawText("Press Start", 10, 20);
 }
 
 static void drawBackground(){
     for(u16 planeY = 0; planeY < 64; planeY++) {
         for(u16 planeX = 0; planeX < 64; planeX++) {
-            // Calculate which tile within the 8x8 pattern to use
             u16 patternX = planeX % 8;
             u16 patternY = planeY % 8;
             u16 tileIdx = g_baseTile + (patternY * 8) + patternX;
@@ -227,6 +240,7 @@ static void drawBackground(){
         }
     }
 }
+
 static void scrollBackground()
 {
     if (g_currentState == STATE_QUIZ)
