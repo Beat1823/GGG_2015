@@ -59,38 +59,41 @@ void sceneManagerDraw() {
     g_waitingForInput = TRUE;
 }
 
-void sceneManagerUpdate(u16* lastJoy) {
+void sceneManagerUpdate(u16* lastJoy, SceneType NextScene) {
     u16 joy = JOY_readJoypad(JOY_1);
     
-    // If not waiting for input, show the scene
     if(!g_waitingForInput) {
         sceneManagerDraw();
         *lastJoy = joy;
         return;
     }
     
-    // Check for A button press (with debounce)
+    // Button Press
     if((joy & BUTTON_A) && !(*lastJoy & BUTTON_A)) {
         switch(g_currentScene->type) {
             case SCENE_TYPE_NORMAL:
                 // Move to next scene
-                if(g_currentScene->nextScene >= 0 && 
-                   g_currentScene->nextScene < SCENES_COUNT) {
-                    g_currentScene = &SCENES[g_currentScene->nextScene];
-                    g_waitingForInput = FALSE;
-                } else {
-                    g_reachedEnd = TRUE;
-                }
-                break;
-                
+                switch(NextScene) {
+                    case SCENE_A:
+                        g_currentScene = &SCENES[g_currentScene->nextSceneA];
+                        g_waitingForInput = FALSE;
+                        break;
+                    case SCENE_B:
+                        g_currentScene = &SCENES[g_currentScene->nextSceneA];
+                        g_waitingForInput = FALSE;
+                        break;
+                    default:
+                        g_reachedEnd = TRUE;
+                        break;
+                }                
             case SCENE_TYPE_QUIZ_TRIGGER:
-                // Signal that we need to show a quiz
                 g_shouldTriggerQuiz = TRUE;
                 g_waitingForInput = FALSE;
                 break;
                 
             case SCENE_TYPE_GOOD_ENDING:
             case SCENE_TYPE_BAD_ENDING:
+                g_shouldTriggerQuiz = FALSE;
                 g_reachedEnd = TRUE;
                 break;
         }
@@ -131,17 +134,31 @@ bool sceneManagerGetQuestionId(u16* outQuestionId) {
     return FALSE;
 }
 
-void sceneManagerContinueAfterQuiz() {
+void sceneManagerContinueAfterQuiz(SceneType NextScene) {
     g_shouldTriggerQuiz = FALSE;
     
     // Move to next scene after quiz
-    if(g_currentScene && 
-       g_currentScene->nextScene >= 0 && 
-       g_currentScene->nextScene < SCENES_COUNT) {
-        g_currentScene = &SCENES[g_currentScene->nextScene];
-        g_reachedEnd = FALSE;
+    if(g_currentScene)
+       switch(NextScene){
+            case SCENE_A:
+                if (g_currentScene->nextSceneA >= 0 && g_currentScene->nextSceneA < SCENES_COUNT) {
+                    g_currentScene = &SCENES[g_currentScene->nextSceneA];
+                    g_reachedEnd = FALSE;
+                    break;
+                }
+            case SCENE_B:
+                if (g_currentScene->nextSceneB >= 0 && g_currentScene->nextSceneB < SCENES_COUNT) {
+                    g_currentScene = &SCENES[g_currentScene->nextSceneB];
+                    g_reachedEnd = FALSE;
+                    break;
+                }
+            default:
+                g_currentScene = NULL;
+                g_reachedEnd = TRUE;
+                break;
+
     } else {
-        // No next scene, we're at an ending
+        g_currentScene = NULL;
         g_reachedEnd = TRUE;
     }
     

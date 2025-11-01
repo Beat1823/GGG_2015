@@ -26,7 +26,8 @@ def parse_scenes(path: Path):
                 # defaults
                 cur['type'] = 'normal'
                 cur['text'] = ''
-                cur['next'] = ''
+                cur['nextSceneA'] = ''
+                cur['nextSceneB'] = ''
                 cur['trigger_quiz'] = ''
                 cur['question_id'] = ''
                 cur['bg'] = '0'
@@ -191,11 +192,13 @@ def main():
         stype = type_map.get(s.get('type','normal').strip(), 'SCENE_NORMAL')
         text = esc_c(s.get('text',''))
         # resolve optional links
-        next_scene = s.get('next','').strip()
+        nextA_scene = s.get('nextSceneA','').strip()
+        nextB_scene = s.get('nextSceneB','').strip()
         trig_quiz  = s.get('trigger_quiz','').strip()
         question_id= s.get('question_id','').strip()
 
-        next_idx = scene_by_id.get(next_scene, -1) if next_scene else -1
+        nextA_idx = scene_by_id.get(nextA_scene, -1) if nextA_scene else -1
+        nextB_idx = scene_by_id.get(nextB_scene, -1) if nextB_scene else -1
         trig_idx = quiz_by_id.get(trig_quiz, -1) if trig_quiz else -1
         q_idx    = q_by_id.get(question_id, -1) if question_id else -1
 
@@ -206,7 +209,8 @@ def main():
         emit(f'    .id = {i},')
         emit(f'    .type = {stype},')
         emit(f'    .text = "{text}",')
-        emit(f'    .nextScene = {next_idx},')
+        emit(f'    .nextSceneA = {nextA_idx},')
+        emit(f'    .nextSceneB = {nextB_idx},')
         emit(f'    .triggerQuiz = {trig_idx},')
         emit(f'    .questionId = {q_idx},')
         emit(f'    .bg = {bg}, .music = {music},')

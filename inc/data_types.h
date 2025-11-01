@@ -11,41 +11,41 @@ typedef enum {
 
 // Question
 typedef struct {
-  u16 id;                // numeric handle; the generator will index these for you
-  u16 category_id;       // mapped from "history", "geography", "math", etc.
-  const char *question;  // ROM string
+  u16 id;                
+  u16 category_id;       
+  const char *question;  
   char answerA[20];
   char answerB[20];
-  char answerC[20];// up to 4 choices; unused set to ""
-  u8  correct;           // 0..3 (a,b,c,d)
+  char answerC[20];
+  u8  correct; 
 } Question;
 
 // Scene
 typedef struct {
-  u16 id;                 // derived from scene_id order
+  u16 id;                 
   SceneType type;
-  const char *text;       // ROM string (pipes -> newlines)
-  s16 nextScene;         // -1 if none, else index into scenes[]
-  s16 triggerQuiz;       // -1 if none, else index into quizzes[]
-  s16 questionId;        // -1 if none, else index into questions[]
-  u8  bg;                 // as-is
-  u8  music;              // as-is
+  const char *text;       
+  s16 nextSceneA;
+  s16 nextSceneB;        
+  s16 triggerQuiz;       
+  s16 questionId;        
+  u8  bg;                 
+  u8  music;              
 } Scene;
 
 // Quiz
 typedef struct {
-  u16 id;                 // index
-  const char *name;       // ROM
+  u16 id;                 
+  const char *name;       
   u8  wrongLimit;
-  u16 questionCount;    // requested count (limit)
-  const u16 *categories;  // ROM array of category ids
-  u16 categoryCount;     // number of categories in the array
+  u16 questionCount;    
+  const u16 *categories;  
+  u16 categoryCount;     
 } Quiz;
 
 // Category names (ROM)
 extern const char * const CATEGORY_NAMES[];
 extern const u16 CATEGORY_COUNT;
 
-// For each category i, an array of question indices (ROM)
-extern const u16 * const CATEGORY_QUESTION_INDEXES[]; // pointers to arrays
+extern const u16 * const CATEGORY_QUESTION_INDEXES[]; 
 extern const u16        CATEGORY_QUESTION_COUNTS[];  

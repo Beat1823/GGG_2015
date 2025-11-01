@@ -9,3 +9,84 @@ name:General Knowledge
 wrong_limit:2
 questions:5
 categories:history,geography,science,videogames,music
+
+QUIZ:internal1
+name: Internal 1
+wrong_limit:0
+questions:1
+singleQuestionMode:TRUE
+categories:logic1
+bg:1
+music:1
+
+QUIZ:internal2
+name: Internal 2
+wrong_limit:0
+questions:1
+singleQuestionMode:TRUE
+categories:logic2
+bg:1
+music:1
+
+QUIZ:internal3
+name: Internal 3
+wrong_limit:0
+questions:1
+singleQuestionMode:TRUE
+categories:logic3
+bg:1
+music:1
+
+QUIZ:internal4
+name: Internal 4
+wrong_limit:0
+questions:1
+singleQuestionMode:TRUE
+categories:logic4
+bg:1
+music:1
+
+QUIZ:internal5
+name: Internal 5
+wrong_limit:0
+questions:1
+singleQuestionMode:TRUE
+categories:logic5
+bg:1
+music:1
+
+QUIZ:demonquiz1
+name: Demon Quiz 1
+wrong_limit:0
+questions:1
+singleQuestionMode:TRUE
+categories:knowledge1
+bg:4
+music:2
+
+QUIZ:demonquiz2
+name: Demon Quiz 2
+wrong_limit:0
+questions:1
+singleQuestionMode:TRUE
+categories:knowledge2
+bg:4
+music:2
+
+QUIZ:demonquiz3
+name: Demon Quiz 3
+wrong_limit:0
+questions:1
+singleQuestionMode:TRUE
+categories:knowledge3
+bg:4
+music:2
+
+QUIZ:demonquiz4
+name: Demon Quiz 4
+wrong_limit:0
+questions:1
+singleQuestionMode:TRUE
+categories:knowledge4
+bg:4
+music:2

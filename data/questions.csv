@@ -59,3 +59,12 @@ q_game_7,videogames,What is the main currency in The Legend of Zelda?,Gold,Rupee
 q_game_8,videogames,Which game series features locations like Vice City and Los Santos?,GTA,Red Dead Redemption,Saints Row,a
 q_game_9,videogames,Who is the creator of the game Minecraft?,Gabe Newell,Notch,Hideo Kojima,b
 q_game_10,videogames,Which company developed the game “Overwatch”?,Valve,Blizzard,Ubisoft,b
+q_log_1,logic1,1.1.2.3.5... What comes next?,8,9,10,a
+q_log_2,logic2,If English is English what's Japanese?,Japanese,Nihongo,English,c
+q_log_3,logic3,If a book costs $1 plus half its cost what's its cost?,$1.50,$1.75,$2.00,c
+q_log_4,logic4,What to ask one always honest and one always lying guards?,Which way?,Other guard's choice,Who is a liar?,b
+q_log_5,logic5,Wolf goat and cabbage. Cross with which first?,Wolf,Goat,Cabbage,b
+q_know1,knowledge1,What is the C Major third?,E,F,G,a
+q_know2,knowledge2,Whose philosophy is quoted as 'I think therefore I am'?,Jean-Paul Sartre,Aristotle,Rene Descartes,c
+q_know3,knowledge3,Which was invented first?,Sandwich,Sliced bread,Mahjong,a
+q_know4,knowledge4,What phenomena does Schrodinger's Cat explore?,Logic puzzles,Quantum mechanics,Cognitive dissonance,b

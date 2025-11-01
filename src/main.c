@@ -21,8 +21,10 @@ static u16 g_lastJoy = 0;
 u16 g_baseTile = 0;
 static s16 g_scrollX = 0;
 static s16 g_scrollY = 0;
+static NextScene g_NextScene = SCENE_A;
 static s16 g_scrollSpeedX = FIX16(2.1);
 static s16 g_scrollSpeedY = FIX16(2.1);
+
 
 // Forward declarations
 static void handleTitleState();
@@ -82,6 +84,7 @@ int main() {
                 
             case STATE_BAD_ENDING:
                 XGM_pausePlay();
+                handleSceneState();
                 break;
             case STATE_GOOD_ENDING:
                 XGM_pausePlay();
@@ -110,7 +113,7 @@ static void handleTitleState() {
 }
 
 static void handleSceneState() {
-    sceneManagerUpdate(&g_lastJoy);
+    sceneManagerUpdate(&g_lastJoy, g_NextScene);
     // Check if we need to trigger a quiz
     if(sceneManagerShouldTriggerQuiz()) {
         u16 questionId;
@@ -158,15 +161,16 @@ static void handleQuizState() {
     switch(result) {
         case QUIZ_FAILED:
             XGM_pausePlay();
-            g_currentState = STATE_BAD_ENDING;
+            g_currentState = STATE_SCENE;
+            g_NextScene = SCENE_B;
             VDP_clearPlane(BG_A, TRUE);
             VDP_clearPlane(BG_B, TRUE);
-            drawEnding(FALSE);
             break;
             
         case QUIZ_PASSED:
             g_currentState = STATE_SCENE;
-            sceneManagerContinueAfterQuiz();
+            g_NextScene = SCENE_A;
+            sceneManagerContinueAfterQuiz(g_NextScene);
             VDP_clearPlane(BG_A, TRUE);
             VDP_clearPlane(BG_B, TRUE);
             sceneManagerDraw();

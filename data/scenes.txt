@@ -1,36 +1,288 @@
-SCENE:intro
+SCENE:intro1
 type:normal
-text: You wake up in a hospital.| Not remembering anything,| you get up from the bed.
-next:scene_1
+text: Intuition is somewhat magical in a dream. |You don't know why, but you make these connections |between what you need to do and what is correct.
+nextSceneA:intro2
+nextSceneB:intro2
+bg:0
+music:1
+
+SCENE:intro2
+type:normal
+text: Perhaps you're still in a dream when you wake, |when you find yourself in an empty room.
+nextSceneA:intro3
+nextSceneB:intro3
+bg:0
+music:1
+
+SCENE:intro3
+type:normal
+text: You feel like you should know what to do next. |Maybe you do know what to do next. |Maybe you've always known. |Or maybe you're just learning.
+nextSceneA:intro4
+nextSceneB:intro4
+bg:0
+music:1
+
+SCENE:intro4
+type:quiz_trigger
+text: Maybe if you focus on what you do know, the rest will come naturally. ||Start small.
+nextSceneA:demon1
+nextSceneB:gameover
+question_id:q_log_1
+bg:0
+music:1
+
+SCENE:gameover
+type:bad_ending
+text: You turn to the red door. |It seems like the only door you could enter. |It's only natural that you enter it.
+nextSceneA:
+nextSceneB:
+bg:2
+music:0
+
+SCENE:demon1
+type:quiz_trigger
+text: A voice slithers from the corner of the room. |It chills you to the bone and freezes you in place. |NOW YOU MUST ANSWER!
+nextSceneA:doublecorrectintro1
+nextSceneB:correctintro1
+question_id:q_know1
+bg:4
+music:2
+
+SCENE:demon2
+type:quiz_trigger
+text: A voice slithers from the corner of the room. |It chills you to the bone and freezes you in place. |NOW YOU MUST ANSWER!
+nextSceneA:doublecorrectintro2
+nextSceneB:correctintro2
+question_id:q_know2
+bg:4
+music:2
+
+SCENE:demon3
+type:quiz_trigger
+text: A voice slithers from the corner of the room. |It chills you to the bone and freezes you in place. |NOW YOU MUST ANSWER!
+nextSceneA:doublecorrectintro3
+nextSceneB:correctintro3
+question_id:q_know3
+bg:4
+music:2
+
+SCENE:demon4
+type:quiz_trigger
+text: A voice slithers from the corner of the room. |It chills you to the bone and freezes you in place. |NOW YOU MUST ANSWER!
+nextSceneA:doublecorrectintro4
+nextSceneB:correctintro4
+question_id:q_know4
+bg:4
+music:2
+
+SCENE:correctintro1
+type:normal
+text: The demon cackles. |YOU'RE ON YOUR OWN!
+nextSceneA:correct1
+nextSceneB:correct1
+bg:4
+music:2
+
+SCENE:correctintro2
+type:normal
+text: The demon cackles. |YOU'RE ON YOUR OWN!
+nextSceneA:correct2
+nextSceneB:correct2
+bg:4
+music:2
+
+SCENE:correctintro3
+type:normal
+text: The demon cackles. |YOU'RE ON YOUR OWN!
+nextSceneA:correct3
+nextSceneB:correct3
+bg:4
+music:2
+
+SCENE:correctintro4
+type:normal
+text: The demon cackles. |YOU'RE ON YOUR OWN!
+nextSceneA:correct4
+nextSceneB:correct4
+bg:4
+music:2
+
+SCENE:doublecorrectintro1
+type:normal
+text: The demon smiles the most awful smile. |REMEMBER, ENGLISH IS AN ENGLISH WORD! |REMEMBER!
+nextSceneA:correct1
+nextSceneB:correct1
+bg:4
+music:2
+
+SCENE:doublecorrectintro2
+type:normal
+text: The demon smiles the most awful smile. |REMEMBER, A THING COSTS WHAT IT COSTS! |REMEMBER!
+nextSceneA:correct2
+nextSceneB:correct2
+bg:4
+music:2
+
+SCENE:doublecorrectintro3
+type:normal
+text: The demon smiles the most awful smile. |REMEMBER, YOU DON'T WANT TO FOLLOW A LIAR! |REMEMBER!
+nextSceneA:correct3
+nextSceneB:correct3
+bg:4
+music:2
+
+SCENE:doublecorrectintro4
+type:normal
+text: The demon smiles the most awful smile. |REMEMBER, A WOLF WILL NOT EAT CABBAGE! |REMEMBER!
+nextSceneA:correct4
+nextSceneB:correct4
+bg:4
+music:2
+
+SCENE:correct1
+type:normal
+text: You begin looking around the room. |There's a door and... another door. |Were there always two doors here?
+nextSceneA:correct12
+nextSceneB:correct12
+bg:0
+music:1
+
+SCENE:correct12
+type:quiz_trigger
+text: You're sure there have definitely always been two doors here. ||Now think...
+nextSceneA:demon2
+nextSceneB:gameover
+question_id:q_log_2
+bg:0
+music:1
+
+SCENE:correct2
+type:normal
+text: You reach for the green door. |It's locked. 
+nextSceneA:correct22
+nextSceneB:correct22
+bg:3
+music:1
+
+SCENE:correct22
+type:quiz_trigger
+text: Surely there are keys somewhere around here, |if you take the time to search for them. ||Now think...
+nextSceneA:demon3
+nextSceneB:gameover2
+question_id:q_log_3
+bg:0
+music:1
+
+SCENE:correct3
+type:quiz_trigger
+text: You go over to the bookshelf and find a book on Lockpicking. |Hmmm, perhaps you don't need a key at all... ||Now think...
+nextSceneA:demon4
+nextSceneB:gameover3
+question_id:q_log_4
+bg:0
+music:1
+
+SCENE:correct4
+type:normal
+text: As you reach to scratch your head, you find |a bobbypin holding your hair in a bun.
+nextSceneA:correct42
+nextSceneB:correct42
+bg:0
+music:1
+
+SCENE:correct42
+type:quiz_trigger
+text: Apparently, you have long, beautiful hair |that falls down as you remove the bobbypin. ||Now think...
+nextSceneA:gameover4
+nextSceneB:final1
+question_id:q_log_5
+bg:0
+music:1
+
+SCENE:gameover2
+type:normal
+text: You go over to the bookshelf and find a book on Algebra. |Perhaps it's a hollow book and the key is inside? |Nope, all that's inside is knowledge.
+nextSceneA:gameover
+nextSceneB:gameover
 bg:0
 music:0
 
-SCENE:scene_1
-type:quiz_trigger
-text: You put on a near by gown but|Suddenly your chest hurts...
-next:scene_2
-trigger_quiz:quiz_1
+SCENE:gameover3
+type:normal
+text: You set down the book on Lockpicking and |a book on Logic catches your eye. |Maybe the key is in understanding |the things which you know to be true.
+nextSceneA:gameover
+nextSceneB:gameover
+bg:0
+music:0
+
+SCENE:gameover4
+type:normal
+text: As you fumble with lock, your thoughts meander... |What are you doing here? |Who are you? |How long have you been here?
+nextSceneA:gameover
+nextSceneB:gameover
+bg:3
+music:0
+
+SCENE:final1
+type:normal
+text: Despite barely understanding the book on Lockpicking, |you effortlessly unlock the door with the bobbypin.
+nextSceneA:final2
+nextSceneB:final2
+bg:3
+music:1
+
+SCENE:final2
+type:normal
+text: Maybe you do this professionally in another life.
+nextSceneA:final3
+nextSceneB:final3
+bg:3
+music:1
+
+SCENE:final3
+type:normal
+text: Maybe you're married in another life.
+nextSceneA:final4
+nextSceneB:final4
+bg:3
+music:1
+
+SCENE:final4
+type:normal
+text: Maybe you're an artist in another life.
+nextSceneA:final5
+nextSceneB:final5
+bg:3
+music:1
+
+SCENE:final5
+type:normal
+text: Who are you really?
+nextSceneA:final6
+nextSceneB:final6
+bg:3
+music:1
+
+SCENE:final6
+type:normal
+text: You step through the door and wake up.
+nextSceneA:final7
+nextSceneB:final7
+bg:3
+music:1
+
+SCENE:final7
+type:normal
+text: Game Design and Programming by Saffron |Music and Story by Fantastic Fox |Art by Roselion
+nextSceneA:final8
+nextSceneB:final8
 bg:1
 music:1
 
-SCENE:scene_2
-type:normal
-text: But it passes. You walk outside.| You see a stranger| and get their attention.
-next:scene_3
-bg:2
-music:2
-
-SCENE:scene_3
-type:quiz_trigger
-text:The man turns around.| He starts walking at you bearing a knife!
-trigger_quiz:quiz_2
-next:scene_4
-bg:2
-music:2
-
-SCENE:scene_4
+SCENE:final8
 type:good_ending
-text:Oh, he just wanted to ask if you wanted a knife.| You got "the knife".
-next:
-bg:2
-music:2
+text: THE END
+nextSceneA:
+nextSceneB:
+bg:1
+music:1
