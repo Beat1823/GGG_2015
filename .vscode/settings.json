@@ -5,6 +5,7 @@
         "string.h": "c",
         "types.h": "c",
         "scene_manager.h": "c",
-        "quiz_manager.h": "c"
+        "quiz_manager.h": "c",
+        "resources.h": "c"
     }
 }

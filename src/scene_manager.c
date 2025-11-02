@@ -52,7 +52,7 @@ void sceneManagerDraw() {
 
 
 static void getTextPosition(const char* text, u16 charIndex, u16* outX, u16* outY) {
-    u16 y = 22;
+    u16 y = 7;
     u16 x = 2;
 
     u16 lineLen = 0;
@@ -60,7 +60,7 @@ static void getTextPosition(const char* text, u16 charIndex, u16* outX, u16* out
     
     for(u16 i = 0; i < charIndex && text[i] != '\0'; i++) {
         if(text[i] == '\n') {
-            y++;
+            y = y + 2;
             x = 2;
             lineLen = 0;
         } else {
@@ -68,7 +68,7 @@ static void getTextPosition(const char* text, u16 charIndex, u16* outX, u16* out
             lineLen++;
             
             if(lineLen >= maxLineLen) {
-                y++;
+                y = y + 2;
                 x = 2;
                 lineLen = 0;
             }
@@ -108,7 +108,7 @@ static void updateTypewriter() {
             u16 x, y;
             getTextPosition(text, i, &x, &y);
             char str[2] = {text[i], '\0'};
-            C_DrawText(str, x, y-2, PAL0);
+            C_DrawText(str, x, y, PAL0);
         }
     }
     
@@ -130,7 +130,7 @@ void sceneManagerUpdate(u16* lastJoy, SceneType nextScenePath) {
                     u16 x, y;
                     getTextPosition(text, i, &x, &y);
                     char str[2] = {text[i], '\0'};
-                    C_DrawText(str, x, y-2, PAL0);
+                    C_DrawText(str, x, y, PAL0);
                 }
             }
             g_textCharIndex = textLen;

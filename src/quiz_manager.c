@@ -145,7 +145,7 @@ void quizManagerDraw() {
     C_DrawText(buf, 4, 14, PAL0);
     
     sprintf(buf, "C: %s", q->answerC);
-    C_DrawText(buf, 4, 14, PAL0);
+    C_DrawText(buf, 4, 16, PAL0);
 }
 
 QuizResult quizManagerUpdate(u16* lastJoy) {

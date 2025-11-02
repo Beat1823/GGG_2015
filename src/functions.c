@@ -7,12 +7,11 @@ static bool g_fontInitialized = FALSE;
 void initCustomFont() {
     if(g_fontInitialized) return;
     
-    g_fontTileBase = TILE_USER_INDEX + 100;
+    g_fontTileBase = TILE_USER_INDEX + 64;
     VDP_loadTileSet(customFontTiles.tileset, g_fontTileBase, DMA);
     
-    PAL_setColor(0, RGB24_TO_VDPCOLOR(0x000000));
-    PAL_setColor(1, RGB24_TO_VDPCOLOR(0xFFFFFF));
-    
+    PAL_setPalette(PAL0, customFontTiles.palette->data, DMA);
+
     g_fontInitialized = TRUE;
 }
 
@@ -35,7 +34,7 @@ void C_DrawText(const char* str, u16 x, u16 y, u16 palette) {
         u16 gridY = charIndex / 16;
         
         u16 rowOffset = gridY * 32;
-        u16 colOffset = gridX * 2; //Since I'm using 16 height, 2 tiles per character
+        u16 colOffset = gridX; //Since I'm using 16 height, 2 tiles per character
         
         u16 topTile = g_fontTileBase + rowOffset + colOffset;
         u16 bottomTile = topTile + 16; 

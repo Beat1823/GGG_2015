@@ -20,7 +20,7 @@ typedef enum {
 static GameState g_currentState = STATE_TITLE;
 static u16 g_lastJoy = 0;
 static u16 g_baseTile = 0;
-static u16 g_fontBaseTile = 0;
+
 static s16 g_scrollX = 0;
 static s16 g_scrollY = 0;
 static NextScene g_nextScenePath = SCENE_A;  // Track which path to take
@@ -41,7 +41,10 @@ static void drawEnding(bool isGood);
 int main() {
     // Initialize hardware
     JOY_init();
-    VDP_setBackgroundColor(1);
+    VDP_setBackgroundColor(0);
+    
+    PAL_setColor(0,RGB24_TO_VDPCOLOR(0x000000));
+
     PAL_setPalette(PAL1, skullBgTile.palette->data, DMA);
 
     g_baseTile = TILE_USER_INDEX;
