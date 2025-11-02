@@ -23,6 +23,6 @@ bool sceneManagerGetQuestionId(u16* outQuestionId);
 void sceneManagerContinueAfterQuiz(SceneType NextScene);
 
 bool sceneManagerReachedEnd();
-SceneType sceneManagerGetEndingType();  // NEW - return ending type
+SceneType sceneManagerGetEndingType();
 
 #endif

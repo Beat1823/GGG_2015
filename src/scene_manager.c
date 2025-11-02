@@ -97,12 +97,12 @@ static void updateTypewriter() {
     g_textTimer++;
     if(g_textTimer < TEXT_DELAY) {
         return;  
-    
+    }
     g_textTimer = 0;
     
 
     for(u16 i = g_lastDrawnIndex; i <= g_textCharIndex && i < textLen; i++) {
-        if(text[i] != '\n') {  // Skip newlines
+        if(text[i] != '\n') {
             u16 x, y;
             getTextPosition(text, i, &x, &y);
             char str[2] = {text[i], '\0'};
@@ -143,7 +143,7 @@ void sceneManagerUpdate(u16* lastJoy, SceneType nextScenePath) {
         return;
     }
 
-    if((joy & BUTTON_A) && !(*lastJoy & BUTTON_A) || (joy & BUTTON_B) && !(*lastJoy & BUTTON_B) || (joy & BUTTON_C) && !(*lastJoy & BUTTON_C)) {
+    if(((joy & BUTTON_A) && !(*lastJoy & BUTTON_A)) || ((joy & BUTTON_B) && !(*lastJoy & BUTTON_B)) || ((joy & BUTTON_C) && !(*lastJoy & BUTTON_C))) {
         switch(g_currentScene->type) {
             case SCENE_TYPE_NORMAL:
                 if(nextScenePath == SCENE_A && g_currentScene->nextSceneA >= 0) {
