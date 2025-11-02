@@ -28,7 +28,7 @@ text: Maybe if you focus on what you do know, the rest will come naturally. ||St
 nextSceneA:demon1
 nextSceneB:gameover
 question_id:q_log_1
-bg:0
+bg:1
 music:1
 
 SCENE:gameover
@@ -45,7 +45,7 @@ text: A voice slithers from the corner of the room. |It chills you to the bone a
 nextSceneA:doublecorrectintro1
 nextSceneB:correctintro1
 question_id:q_know1
-bg:4
+bg:1
 music:2
 
 SCENE:demon2
@@ -54,7 +54,7 @@ text: A voice slithers from the corner of the room. |It chills you to the bone a
 nextSceneA:doublecorrectintro2
 nextSceneB:correctintro2
 question_id:q_know2
-bg:4
+bg:1
 music:2
 
 SCENE:demon3
@@ -63,7 +63,7 @@ text: A voice slithers from the corner of the room. |It chills you to the bone a
 nextSceneA:doublecorrectintro3
 nextSceneB:correctintro3
 question_id:q_know3
-bg:4
+bg:1
 music:2
 
 SCENE:demon4
@@ -72,7 +72,7 @@ text: A voice slithers from the corner of the room. |It chills you to the bone a
 nextSceneA:doublecorrectintro4
 nextSceneB:correctintro4
 question_id:q_know4
-bg:4
+bg:1
 music:2
 
 SCENE:correctintro1
@@ -80,7 +80,7 @@ type:normal
 text: The demon cackles. |YOU'RE ON YOUR OWN!
 nextSceneA:correct1
 nextSceneB:correct1
-bg:4
+bg:3
 music:2
 
 SCENE:correctintro2
@@ -88,7 +88,7 @@ type:normal
 text: The demon cackles. |YOU'RE ON YOUR OWN!
 nextSceneA:correct2
 nextSceneB:correct2
-bg:4
+bg:3
 music:2
 
 SCENE:correctintro3
@@ -96,7 +96,7 @@ type:normal
 text: The demon cackles. |YOU'RE ON YOUR OWN!
 nextSceneA:correct3
 nextSceneB:correct3
-bg:4
+bg:3
 music:2
 
 SCENE:correctintro4
@@ -104,7 +104,7 @@ type:normal
 text: The demon cackles. |YOU'RE ON YOUR OWN!
 nextSceneA:correct4
 nextSceneB:correct4
-bg:4
+bg:3
 music:2
 
 SCENE:doublecorrectintro1
@@ -112,7 +112,7 @@ type:normal
 text: The demon smiles the most awful smile. |REMEMBER, ENGLISH IS AN ENGLISH WORD! |REMEMBER!
 nextSceneA:correct1
 nextSceneB:correct1
-bg:4
+bg:3
 music:2
 
 SCENE:doublecorrectintro2
@@ -120,7 +120,7 @@ type:normal
 text: The demon smiles the most awful smile. |REMEMBER, A THING COSTS WHAT IT COSTS! |REMEMBER!
 nextSceneA:correct2
 nextSceneB:correct2
-bg:4
+bg:3
 music:2
 
 SCENE:doublecorrectintro3
@@ -128,7 +128,7 @@ type:normal
 text: The demon smiles the most awful smile. |REMEMBER, YOU DON'T WANT TO FOLLOW A LIAR! |REMEMBER!
 nextSceneA:correct3
 nextSceneB:correct3
-bg:4
+bg:3
 music:2
 
 SCENE:doublecorrectintro4
@@ -136,7 +136,7 @@ type:normal
 text: The demon smiles the most awful smile. |REMEMBER, A WOLF WILL NOT EAT CABBAGE! |REMEMBER!
 nextSceneA:correct4
 nextSceneB:correct4
-bg:4
+bg:3
 music:2
 
 SCENE:correct1
@@ -153,7 +153,7 @@ text: You're sure there have definitely always been two doors here. ||Now think.
 nextSceneA:demon2
 nextSceneB:gameover
 question_id:q_log_2
-bg:0
+bg:1
 music:1
 
 SCENE:correct2
@@ -170,7 +170,7 @@ text: Surely there are keys somewhere around here, |if you take the time to sear
 nextSceneA:demon3
 nextSceneB:gameover2
 question_id:q_log_3
-bg:0
+bg:1
 music:1
 
 SCENE:correct3
@@ -179,7 +179,7 @@ text: You go over to the bookshelf and find a book on Lockpicking. |Hmmm, perhap
 nextSceneA:demon4
 nextSceneB:gameover3
 question_id:q_log_4
-bg:0
+bg:1
 music:1
 
 SCENE:correct4
@@ -187,7 +187,7 @@ type:normal
 text: As you reach to scratch your head, you find |a bobbypin holding your hair in a bun.
 nextSceneA:correct42
 nextSceneB:correct42
-bg:0
+bg:3
 music:1
 
 SCENE:correct42
@@ -196,7 +196,7 @@ text: Apparently, you have long, beautiful hair |that falls down as you remove t
 nextSceneA:gameover4
 nextSceneB:final1
 question_id:q_log_5
-bg:0
+bg:1
 music:1
 
 SCENE:gameover2
@@ -204,7 +204,7 @@ type:normal
 text: You go over to the bookshelf and find a book on Algebra. |Perhaps it's a hollow book and the key is inside? |Nope, all that's inside is knowledge.
 nextSceneA:gameover
 nextSceneB:gameover
-bg:0
+bg:2
 music:0
 
 SCENE:gameover3
@@ -212,7 +212,7 @@ type:normal
 text: You set down the book on Lockpicking and |a book on Logic catches your eye. |Maybe the key is in understanding |the things which you know to be true.
 nextSceneA:gameover
 nextSceneB:gameover
-bg:0
+bg:2
 music:0
 
 SCENE:gameover4
@@ -220,7 +220,7 @@ type:normal
 text: As you fumble with lock, your thoughts meander... |What are you doing here? |Who are you? |How long have you been here?
 nextSceneA:gameover
 nextSceneB:gameover
-bg:3
+bg:2
 music:0
 
 SCENE:final1
@@ -276,7 +276,7 @@ type:normal
 text: Game Design and Programming by Saffron |Music and Story by Fantastic Fox |Art by Roselion
 nextSceneA:final8
 nextSceneB:final8
-bg:1
+bg:3
 music:1
 
 SCENE:final8
@@ -284,5 +284,5 @@ type:good_ending
 text: THE END
 nextSceneA:
 nextSceneB:
-bg:1
+bg:3
 music:1

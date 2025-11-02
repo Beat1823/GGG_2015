@@ -22,6 +22,7 @@ bool sceneManagerGetTriggeredQuiz(u16* outQuizId);
 bool sceneManagerGetQuestionId(u16* outQuestionId);
 void sceneManagerContinueAfterQuiz(SceneType NextScene);
 
+u8 sceneManagerGetCurrentBGId();
 bool sceneManagerReachedEnd();
 SceneType sceneManagerGetEndingType();
 

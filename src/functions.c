@@ -7,7 +7,7 @@ static bool g_fontInitialized = FALSE;
 void initCustomFont() {
     if(g_fontInitialized) return;
     
-    g_fontTileBase = TILE_USER_INDEX + 64;
+    g_fontTileBase = TILE_USER_INDEX + 300;
     VDP_loadTileSet(customFontTiles.tileset, g_fontTileBase, DMA);
     
     PAL_setPalette(PAL0, customFontTiles.palette->data, DMA);

@@ -79,6 +79,10 @@ static void getTextPosition(const char* text, u16 charIndex, u16* outX, u16* out
     *outY = y;
 }
 
+u8 sceneManagerGetCurrentBGId()
+{
+    return g_currentScene ? g_currentScene->bg : 0;
+}
 
 static void updateTypewriter() {
     if(!g_currentScene) return;
