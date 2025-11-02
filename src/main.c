@@ -1,5 +1,6 @@
 #include <genesis.h>
 #include "resources.h"
+#include "functions.h"
 #include "data_load.h"
 #include "scene_manager.h"
 #include "quiz_manager.h"
@@ -18,7 +19,8 @@ typedef enum {
 
 static GameState g_currentState = STATE_TITLE;
 static u16 g_lastJoy = 0;
-u16 g_baseTile = 0;
+static u16 g_baseTile = 0;
+static u16 g_fontBaseTile = 0;
 static s16 g_scrollX = 0;
 static s16 g_scrollY = 0;
 static NextScene g_nextScenePath = SCENE_A;  // Track which path to take
@@ -40,14 +42,12 @@ int main() {
     // Initialize hardware
     JOY_init();
     VDP_setBackgroundColor(1);
-    
-    PAL_setColor(0, RGB24_TO_VDPCOLOR(0xFF8000));
-    PAL_setColor(1, RGB24_TO_VDPCOLOR(0x000000));
-    PAL_setColor(15, RGB24_TO_VDPCOLOR(0xFF0000));
     PAL_setPalette(PAL1, skullBgTile.palette->data, DMA);
 
     g_baseTile = TILE_USER_INDEX;
     VDP_loadTileSet(skullBgTile.tileset, g_baseTile, DMA);
+    
+    initCustomFont();
     
     VDP_clearPlane(BG_A, TRUE);
     VDP_clearPlane(BG_B, TRUE);
@@ -170,7 +170,6 @@ static void handleQuizState() {
 
     switch(result) {
         case QUIZ_FAILED:
-            // FIX: Set path to SCENE_B (failure path) and continue scene
             XGM_pausePlay();
             g_nextScenePath = SCENE_B;
             sceneManagerContinueAfterQuiz(g_nextScenePath);
@@ -182,7 +181,6 @@ static void handleQuizState() {
             break;
             
         case QUIZ_PASSED:
-            // FIX: Set path to SCENE_A (success path) and continue scene
             g_nextScenePath = SCENE_A;
             sceneManagerContinueAfterQuiz(g_nextScenePath);
             g_currentState = STATE_SCENE;
@@ -215,17 +213,17 @@ static void handleEndingState() {
 
 static void drawTitle() {
     VDP_clearPlane(BG_A, TRUE);
-    VDP_drawText("Knowing", 14, 8);
-    VDP_drawText("Press Start", 14, 20);
+    C_DrawText("Knowing", 14, 6, PAL0);
+    C_DrawText("Press Start", 14, 18, PAL0);
 }
 
 static void drawEnding(bool isGood) {
     if(isGood) {
-        VDP_drawText("The End", 13, 12);
+        C_DrawText("The End", 13, 10, PAL0);
     } else {
-        VDP_drawText("Bad End", 14, 12);
+        C_DrawText("Bad End", 14, 10, PAL0);
     }
-    VDP_drawText("Press Start", 10, 20);
+    C_DrawText("Press Start", 10, 18, PAL0);
 }
 
 static void drawBackground(){

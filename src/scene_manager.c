@@ -1,4 +1,5 @@
 #include <genesis.h>
+#include "functions.h"
 #include "scene_manager.h"
 
 static const Scene* g_currentScene = NULL;
@@ -53,6 +54,7 @@ void sceneManagerDraw() {
 static void getTextPosition(const char* text, u16 charIndex, u16* outX, u16* outY) {
     u16 y = 22;
     u16 x = 2;
+
     u16 lineLen = 0;
     const u16 maxLineLen = 36;
     
@@ -87,7 +89,7 @@ static void updateTypewriter() {
 
     if(g_textCharIndex >= textLen) {
         if(!g_waitingForInput) {
-            VDP_drawText("Continue...", 8, 5);
+            C_DrawText("Continue...", 8, 3, PAL0);
             g_waitingForInput = TRUE;
         }
         return;
@@ -106,7 +108,7 @@ static void updateTypewriter() {
             u16 x, y;
             getTextPosition(text, i, &x, &y);
             char str[2] = {text[i], '\0'};
-            VDP_drawText(str, x, y);
+            C_DrawText(str, x, y-2, PAL0);
         }
     }
     
@@ -128,12 +130,12 @@ void sceneManagerUpdate(u16* lastJoy, SceneType nextScenePath) {
                     u16 x, y;
                     getTextPosition(text, i, &x, &y);
                     char str[2] = {text[i], '\0'};
-                    VDP_drawText(str, x, y);
+                    C_DrawText(str, x, y-2, PAL0);
                 }
             }
             g_textCharIndex = textLen;
             g_lastDrawnIndex = textLen;
-            VDP_drawText("Continue...", 8, 5);
+            C_DrawText("Continue...", 8, 3, PAL0);
             g_waitingForInput = TRUE;
         }
     }

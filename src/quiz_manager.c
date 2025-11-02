@@ -1,4 +1,5 @@
 #include <genesis.h>
+#include "functions.h"
 #include "quiz_manager.h"
 
 // Quiz state
@@ -67,9 +68,9 @@ void quizManagerDrawCategorySelect() {
     // Draw quiz name centered
     u16 nameLen = strlen(g_currentQuiz->name);
     u16 xPos = (40 - nameLen) / 2;
-    VDP_drawText(g_currentQuiz->name, xPos, 6);
+    C_DrawText(g_currentQuiz->name, xPos, 4, PAL0);
     
-    VDP_drawText("Choose Your Trial:", 11, 10);
+    C_DrawText("Choose Your Trial:", 11, 8, PAL0);
     
     // Draw category options (up to 3 for A/B/C buttons)
     for(u8 i = 0; i < g_currentQuiz->categoryCount && i < 3; i++) {
@@ -79,7 +80,7 @@ void quizManagerDrawCategorySelect() {
         char buf[64];
         char buttonLabel = 'A' + i;
         sprintf(buf, "%c: %s", buttonLabel, catName);
-        VDP_drawText(buf, 14, 14 + i * 2);
+        C_DrawText(buf, 14, 12 + i * 2, PAL0);
     }
 }
 
@@ -127,24 +128,24 @@ void quizManagerDraw() {
                 g_currentQuiz->questionCount,
                 g_wrongAnswerCount, 
                 g_currentQuiz->wrongLimit);
-        VDP_drawText(buf, 2, 2);
+        C_DrawText(buf, 2, 0, PAL0);
     } else {
-        VDP_drawText("Answer the riddle:", 10, 2);
+        C_DrawText("Answer the riddle:", 10, 0, PAL0);
     }
     
     // Draw question text
-    VDP_drawText(q->question, 2, 8);
+    C_DrawText(q->question, 2, 6, PAL0);
     
     // Draw answer choices
     char buf[80];
     sprintf(buf, "A: %s", q->answerA);
-    VDP_drawText(buf, 4, 14);
+    C_DrawText(buf, 4, 12, PAL0);
     
     sprintf(buf, "B: %s", q->answerB);
-    VDP_drawText(buf, 4, 16);
+    C_DrawText(buf, 4, 14, PAL0);
     
     sprintf(buf, "C: %s", q->answerC);
-    VDP_drawText(buf, 4, 18);
+    C_DrawText(buf, 4, 14, PAL0);
 }
 
 QuizResult quizManagerUpdate(u16* lastJoy) {
